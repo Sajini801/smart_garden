@@ -6,7 +6,7 @@ DigitalOut alertLed(PA_10);    // alert LED connected to D2
 #define LIGHT_THRESHOLD 0.3   // threshold for light sensor
 
 int main() {
-    // initialize the led as OFF 
+    // initialise the led as OFF 
     alertLed = 0;
 
     while (true) {
