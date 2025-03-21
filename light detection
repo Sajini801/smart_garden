@@ -3,7 +3,7 @@
 AnalogIn lightSensor(PB_0);  // light sensor connect D6
 DigitalOut alertLed(PA_10);    // alert LED connected to D2
 
-#define LIGHT_THRESHOLD 0.4   // threshold for light sensor
+#define LIGHT_THRESHOLD 0.3   // threshold for light sensor
 
 int main() {
     // initialize the led to OFF 
