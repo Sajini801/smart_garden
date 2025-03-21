@@ -1,25 +1,22 @@
 #include "mbed.h"
 
-DigitalIn lightSensor(PB_0);  // light sensor connect D6
+AnalogIn lightSensor(PB_0);  // light sensor connect D6
 DigitalOut alertLed(PA_10);    // alert LED connected to D2
 
 #define LIGHT_THRESHOLD 0.4   // threshold for light sensor
 
 int main() {
-    // light sensor pin as PullDown
-    lightSensor.mode(PullDown);
-
     // initialize the led to OFF 
-    alertLed = OFF;
+    alertLed = 0;
 
     while (true) {
         float lightValue = lightSensor.read();// Reading the light sensor value
 
         // Checking if the light level is lower than the threshold
         if (lightValue < LIGHT_THRESHOLD) {
-            alertLed = ON;  // turning ON the LED if light intensity is low
+            alertLed = 1;  // turning ON the LED if light intensity is low
         } else {
-            alertLed = OFF; 
+            alertLed = 0; 
         }
 
         // delay to avoid rapid change
