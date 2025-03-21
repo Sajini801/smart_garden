@@ -15,7 +15,7 @@ int main() {
     while (true) {
         float lightValue = lightSensor.read();// Reading the light sensor value
 
-        // Checking if the light level is below the threshold
+        // Checking if the light level is lower than the threshold
         if (lightValue < LIGHT_THRESHOLD) {
             alertLed = ON;  // turning ON the LED if light intensity is low
         } else {
