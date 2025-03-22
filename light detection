@@ -5,6 +5,8 @@ DigitalOut alertLed(PA_10);    // alert LED connected to D2
 
 #define LIGHT_THRESHOLD 0.3   // threshold for light sensor
 
+BufferedSerial pc(USBTX, USBRX, 115200); //TX,RX,Baud rate 115200
+
 int main() {
     // initialise the led as OFF 
     alertLed = 0;
@@ -14,12 +16,13 @@ int main() {
 
         // Checking if the light level is lower than the threshold
         if (lightValue < LIGHT_THRESHOLD) {
-            alertLed = 1;  // turning ON the LED if light intensity is low
+            alertLed = 1;                      // turning ON the LED if light intensity is low
+            pc.printf("Alert:LOW light\r\n");  //sending alert over uart 
         } else {
             alertLed = 0; 
         }
 
         // delay to avoid rapid change
-        thread_sleep_for(200);
+        ThisThread::sleep_for(200ms);
     }
 }
